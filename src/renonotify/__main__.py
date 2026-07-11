@@ -61,7 +61,10 @@ def main() -> int:
 
     rss_cfg = cfg.get("rss", {})
     if rss_cfg.get("enabled", True):
-        items += rss.collect_entries(rss_cfg.get("feeds", []), cutoff)
+        feeds = list(rss_cfg.get("feeds") or [])
+        feeds += rss.feeds_from_opml(rss_cfg.get("opml"))
+        feeds = list(dict.fromkeys(feeds))  # dedupe, keep order
+        items += rss.collect_entries(feeds, cutoff)
 
     sum_cfg = cfg.get("summary", {})
     api_key = os.environ.get("ANTHROPIC_API_KEY", "")

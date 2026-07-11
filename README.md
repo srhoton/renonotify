@@ -33,6 +33,18 @@ Repo → Settings → Secrets and variables → Actions. Add:
 Edit `config.yaml` — add your RSS feed URLs, tweak the digest instructions,
 and adjust the default lookback window.
 
+Instead of (or in addition to) listing feeds one by one, you can point
+`rss.opml` at OPML subscription lists — local files or URLs, e.g. an export
+from your feed reader. Feeds from OPML are merged with the `feeds` list and
+deduplicated:
+
+```yaml
+rss:
+  opml:
+    - subscriptions.opml
+    - https://example.com/subscriptions.opml
+```
+
 ## Running
 
 **On a schedule:** the workflow in `.github/workflows/notify.yml` runs daily at

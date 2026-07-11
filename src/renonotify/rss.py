@@ -4,11 +4,54 @@ from __future__ import annotations
 
 import logging
 import time
+import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
+from pathlib import Path
 
 import feedparser
+import requests
 
 log = logging.getLogger(__name__)
+
+
+def feeds_from_opml(sources: str | list[str] | None) -> list[str]:
+    """Extract feed URLs from OPML subscription lists.
+
+    `sources` is a single OPML location or a list of them; each may be a
+    local file path or an http(s) URL. Unreadable sources are logged and
+    skipped rather than failing the run.
+    """
+    if not sources:
+        return []
+    if isinstance(sources, str):
+        sources = [sources]
+
+    urls: list[str] = []
+    for source in sources:
+        try:
+            if source.startswith(("http://", "https://")):
+                resp = requests.get(source, timeout=30)
+                resp.raise_for_status()
+                text = resp.text
+            else:
+                text = Path(source).read_text()
+            root = ET.fromstring(text)
+        except Exception:
+            log.exception("Failed to load OPML, skipping: %s", source)
+            continue
+
+        # iter() walks nested outlines, so folder hierarchies work too
+        found = [
+            o.attrib["xmlUrl"]
+            for o in root.iter("outline")
+            if o.attrib.get("xmlUrl")
+        ]
+        if found:
+            log.info("Loaded %d feeds from OPML: %s", len(found), source)
+        else:
+            log.warning("No feeds found in OPML: %s", source)
+        urls += found
+    return urls
 
 
 def _entry_time(entry) -> datetime | None:
