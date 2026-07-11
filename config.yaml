@@ -17,6 +17,11 @@ rss:
     - https://aws.amazon.com/blogs/compute/feed/
     - https://www.anthropic.com/rss.xml
     # add more feed URLs here
+  # Optionally import feeds from OPML subscription lists (merged with `feeds`
+  # and deduplicated). Each entry can be a local file path or an http(s) URL.
+  # opml:
+  #   - subscriptions.opml
+  #   - https://example.com/subscriptions.opml
 
 summary:
   model: claude-haiku-4-5
