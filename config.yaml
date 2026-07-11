@@ -1,0 +1,29 @@
+# Non-secret configuration. Secrets (Bluesky app password, Anthropic API key,
+# Slack webhook URL) come from environment variables — see README.
+
+# Default lookback window in hours (overridable with --hours)
+default_hours: 12
+
+bluesky:
+  enabled: true
+  # Your handle, e.g. "steve.bsky.social". Can also be set via BLUESKY_HANDLE env var.
+  handle: ""
+  # Max timeline posts to collect per run (safety cap)
+  max_posts: 300
+
+rss:
+  enabled: true
+  feeds:
+    - https://aws.amazon.com/blogs/compute/feed/
+    - https://www.anthropic.com/rss.xml
+    # add more feed URLs here
+
+summary:
+  model: claude-haiku-4-5
+  max_tokens: 1500
+  # Steer the digest however you like
+  instructions: >
+    Group items by theme. Lead with the most notable or actionable items.
+    Be concise — this is a Slack digest, not an essay. Include links for
+    anything worth clicking through. Skip pure noise (giveaways, memes,
+    duplicate coverage of the same story).
