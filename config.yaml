@@ -2,7 +2,7 @@
 # Slack webhook URL) come from environment variables — see README.
 
 # Default lookback window in hours (overridable with --hours)
-default_hours: 12
+default_hours: 4
 
 bluesky:
   enabled: true
