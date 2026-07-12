@@ -42,9 +42,7 @@ def feeds_from_opml(sources: str | list[str] | None) -> list[str]:
 
         # iter() walks nested outlines, so folder hierarchies work too
         found = [
-            o.attrib["xmlUrl"]
-            for o in root.iter("outline")
-            if o.attrib.get("xmlUrl")
+            o.attrib["xmlUrl"] for o in root.iter("outline") if o.attrib.get("xmlUrl")
         ]
         if found:
             log.info("Loaded %d feeds from OPML: %s", len(found), source)

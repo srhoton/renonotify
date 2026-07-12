@@ -2,8 +2,8 @@ name: Feed digest
 
 on:
   schedule:
-    # 12:00 UTC = 8am ET. Note: GitHub cron can lag 5-15 min at busy times.
-    - cron: "0 12 * * *"
+    # Every 4 hours, on the hour. Note: GitHub cron can lag 5-15 min at busy times.
+    - cron: "0 */4 * * *"
   workflow_dispatch:
     inputs:
       hours:

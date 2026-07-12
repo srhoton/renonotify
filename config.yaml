@@ -19,9 +19,8 @@ rss:
     # add more feed URLs here
   # Optionally import feeds from OPML subscription lists (merged with `feeds`
   # and deduplicated). Each entry can be a local file path or an http(s) URL.
-  # opml:
-  #   - subscriptions.opml
-  #   - https://example.com/subscriptions.opml
+  opml:
+    - feeds.opml
 
 summary:
   model: claude-haiku-4-5
