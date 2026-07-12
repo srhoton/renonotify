@@ -9,7 +9,7 @@ on:
       hours:
         description: "Lookback window in hours"
         required: false
-        default: "12"
+        default: "4"
 
 permissions:
   contents: read
@@ -36,6 +36,6 @@ jobs:
           BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-          HOURS: ${{ github.event.inputs.hours || '12' }}
+          HOURS: ${{ github.event.inputs.hours || '4' }}
         run: |
           renonotify --hours "$HOURS"
