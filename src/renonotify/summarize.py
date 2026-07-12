@@ -19,6 +19,13 @@ Slack mrkdwn rules (these differ from standard Markdown):
 - Use short sections with a bold header line, then a few bullet lines ("• ")
 - No tables, no headings with #
 
+Every bullet line must end with a Slack-format link back to that item's
+source, built from its `url` field, e.g. "• Summary text <https://...|read more>".
+Choose whatever link text fits (the feed name, "read more", the author's
+handle, etc.) as long as it's a real <url|text> link using that exact item's
+url. If an item's url is empty or missing, still include it in the digest but
+without a link — never invent a url and never drop the item to avoid this.
+
 Keep the whole digest comfortably under 2800 characters."""
 
 

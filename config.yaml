@@ -28,6 +28,6 @@ summary:
   # Steer the digest however you like
   instructions: >
     Group items by theme. Lead with the most notable or actionable items.
-    Be concise — this is a Slack digest, not an essay. Include links for
-    anything worth clicking through. Skip pure noise (giveaways, memes,
-    duplicate coverage of the same story).
+    Be concise — this is a Slack digest, not an essay. Every item must end
+    with a link to its source. Skip pure noise (giveaways, memes, duplicate
+    coverage of the same story).
