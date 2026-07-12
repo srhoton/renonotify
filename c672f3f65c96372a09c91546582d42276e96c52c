@@ -1,0 +1,12 @@
+Session prompts (Claude Code):
+
+1. "I need you to do two things in this repo:
+    1. Copy the opml config from ~/.config/renomail/feeds.opml to this repo and set it up.
+    2. Configure the github actions workflow to run every four hours."
+
+2. "/trueup — ok. Please commit your work, add prompts in this session to the commit
+    via git notes, push it, and using your github cli tool, create a PR. Make sure the
+    README for the PR accurately describes the changes made from a full diff from the
+    branch you are merging into."
+
+Session: https://claude.ai/code/session_01XNRqSnzBGrVkyoHXjLnD99
