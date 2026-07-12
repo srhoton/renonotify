@@ -21,11 +21,18 @@ def main() -> int:
         prog="renonotify",
         description="Summarize Bluesky + RSS feeds and post the digest to Slack.",
     )
-    parser.add_argument("--hours", type=float, default=None,
-                        help="Lookback window in hours (default: from config)")
+    parser.add_argument(
+        "--hours",
+        type=float,
+        default=None,
+        help="Lookback window in hours (default: from config)",
+    )
     parser.add_argument("--config", type=Path, default=Path("config.yaml"))
-    parser.add_argument("--dry-run", action="store_true",
-                        help="Print the digest instead of posting to Slack")
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Print the digest instead of posting to Slack",
+    )
     parser.add_argument("-v", "--verbose", action="store_true")
     args = parser.parse_args()
 
@@ -51,7 +58,9 @@ def main() -> int:
         if handle and app_password:
             try:
                 items += bluesky.collect_posts(
-                    handle, app_password, cutoff,
+                    handle,
+                    app_password,
+                    cutoff,
                     max_posts=bsky_cfg.get("max_posts", 300),
                 )
             except Exception:

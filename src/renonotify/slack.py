@@ -42,9 +42,7 @@ def post_digest(webhook_url: str, header: str, digest: str) -> None:
         }
     ]
     for part in _chunks(digest):
-        blocks.append(
-            {"type": "section", "text": {"type": "mrkdwn", "text": part}}
-        )
+        blocks.append({"type": "section", "text": {"type": "mrkdwn", "text": part}})
 
     resp = requests.post(webhook_url, json={"blocks": blocks}, timeout=30)
     if resp.status_code != 200:

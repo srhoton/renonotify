@@ -47,8 +47,8 @@ rss:
 
 ## Running
 
-**On a schedule:** the workflow in `.github/workflows/notify.yml` runs daily at
-12:00 UTC. Edit the cron line to taste.
+**On a schedule:** the workflow in `.github/workflows/notify.yml` runs every 4
+hours. Edit the cron line to taste.
 
 **On demand:** Actions tab → *Feed digest* → **Run workflow** (set the hours),
 or from a terminal:
